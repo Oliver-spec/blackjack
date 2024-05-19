@@ -19,7 +19,6 @@ public class Dealer
   public void Hit()
   {
     _cards.Add(Deck.Draw());
-    // ShowHands();
     CalculateTotal();
   }
   public void ShowTrueHands()
@@ -64,7 +63,6 @@ public class Dealer
   }
   public bool HasAce()
   {
-    // bool hasAce = false;
     foreach (Card card in _cards)
     {
       if (card.Name == "A")
@@ -100,19 +98,6 @@ public class Dealer
         aceCount--;
       }
     }
-
-    // if (total > 21)
-    // {
-    //   Console.WriteLine("Dealer have busted!");
-    //   ShowTrueHands();
-    //   Environment.Exit(0);
-    // }
-    // else if (total == 21)
-    // {
-    //   Console.WriteLine("Dealer have won!");
-    //   ShowTrueHands();
-    //   Environment.Exit(0);
-    // }
 
     _total = total;
   }

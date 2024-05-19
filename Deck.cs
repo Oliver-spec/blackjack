@@ -2,7 +2,7 @@
 
 public static class Deck
 {
-  public static List<Card> _cards = [];
+  private static List<Card> _cards = [];
   private static readonly List<string> _names = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
   private static readonly List<string> _suits = ["Spades", "Hearts", "Diamonds", "Clubs"];
 

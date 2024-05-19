@@ -48,15 +48,6 @@ public static class Program
 
     while (true)
     {
-      // bool hasAce = false;
-      // foreach (Card card in dealer.Cards)
-      // {
-      //   if (card.Name == "A")
-      //   {
-      //     hasAce = true;
-      //   }
-      // }
-
       if (dealer.Total <= 16)
       {
         dealer.Hit();

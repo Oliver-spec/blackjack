@@ -20,7 +20,6 @@ public class Player
   public void Hit()
   {
     _cards.Add(Deck.Draw());
-    // ShowHands();
     CalculateTotal();
   }
   public void Stand()
@@ -74,17 +73,6 @@ public class Player
         aceCount--;
       }
     }
-
-    // if (total > 21)
-    // {
-    //   Console.WriteLine("You have busted!");
-    //   Environment.Exit(0);
-    // }
-    // else if (total == 21)
-    // {
-    //   Console.WriteLine("You have won!");
-    //   Environment.Exit(0);
-    // }
 
     _total = total;
   }
