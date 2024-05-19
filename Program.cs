@@ -65,13 +65,13 @@ public static class Program
 
       if (dealer.Total > player.Total)
       {
-        Console.WriteLine("The dealer have won!");
+        Console.WriteLine("The dealer has won!");
         dealer.ShowTrueHands();
         break;
       }
       else if (dealer.Total < player.Total)
       {
-        Console.WriteLine("The player have won!");
+        Console.WriteLine("The player has won!");
         dealer.ShowTrueHands();
         break;
       }

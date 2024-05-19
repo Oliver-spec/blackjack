@@ -26,7 +26,7 @@ public class Dealer
     Console.Write("Dealer's cards: ");
     foreach (Card card in _cards)
     {
-      Console.Write($"{card.Name} ");
+      Console.Write($"{card.Name}{card.Suit} ");
     }
     Console.Write("\n");
   }
@@ -41,7 +41,7 @@ public class Dealer
       }
       else
       {
-        Console.Write(_cards[i].Name + " ");
+        Console.Write(_cards[i].Name + _cards[i].Suit + " ");
       }
     }
     Console.Write("\n");
@@ -50,13 +50,13 @@ public class Dealer
   {
     if (_total > 21)
     {
-      Console.WriteLine("Dealer have busted!");
+      Console.WriteLine("Dealer has busted!");
       ShowTrueHands();
       Environment.Exit(0);
     }
     else if (_total == 21)
     {
-      Console.WriteLine("Dealer have won!");
+      Console.WriteLine("Dealer has won!");
       ShowTrueHands();
       Environment.Exit(0);
     }

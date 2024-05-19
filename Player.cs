@@ -31,7 +31,7 @@ public class Player
     Console.Write("Your cards: ");
     foreach (Card card in _cards)
     {
-      Console.Write($"{card.Name} ");
+      Console.Write($"{card.Name}{card.Suit} ");
     }
     Console.Write("\n");
   }

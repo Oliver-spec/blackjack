@@ -34,7 +34,22 @@ public class Card
   }
   public string Suit
   {
-    get { return _suit; }
+    get
+    {
+      switch (_suit)
+      {
+        case "Spades":
+          return "\u2660";
+        case "Clubs":
+          return "\u2663";
+        case "Hearts":
+          return "\u2665";
+        case "Diamonds":
+          return "\u2666";
+        default:
+          return _suit;
+      }
+    }
   }
   public int Value
   {
