@@ -11,10 +11,14 @@ public static class Program
     Dealer dealer = new();
     dealer.Hit();
     dealer.Hit();
+    dealer.ShowHands();
+    dealer.CheckVictory();
 
     Player player = new();
     player.Hit();
     player.Hit();
+    player.ShowHands();
+    player.CheckVictory();
 
     while (true)
     {
@@ -24,6 +28,8 @@ public static class Program
       {
         case "h":
           player.Hit();
+          player.ShowHands();
+          player.CheckVictory();
           break;
         case "s":
           player.Stand();
@@ -41,22 +47,26 @@ public static class Program
 
     while (true)
     {
-      bool hasAce = false;
-      foreach (Card card in dealer.Cards)
-      {
-        if (card.Name == "A")
-        {
-          hasAce = true;
-        }
-      }
+      // bool hasAce = false;
+      // foreach (Card card in dealer.Cards)
+      // {
+      //   if (card.Name == "A")
+      //   {
+      //     hasAce = true;
+      //   }
+      // }
 
       if (dealer.Total <= 16)
       {
         dealer.Hit();
+        dealer.ShowHands();
+        dealer.CheckVictory();
       }
-      else if (dealer.Total == 17 && hasAce)
+      else if (dealer.Total == 17 && dealer.HasAce())
       {
         dealer.Hit();
+        dealer.ShowHands();
+        dealer.CheckVictory();
       }
 
       if (dealer.Total > player.Total)

@@ -19,7 +19,7 @@ public class Dealer
   public void Hit()
   {
     _cards.Add(Deck.Draw());
-    ShowHands();
+    // ShowHands();
     CalculateTotal();
   }
   public void ShowTrueHands()
@@ -31,7 +31,7 @@ public class Dealer
     }
     Console.Write("\n");
   }
-  private void ShowHands()
+  public void ShowHands()
   {
     Console.Write("Dealer's cards: ");
     for (int i = 0; i < _cards.Count; i++)
@@ -46,6 +46,34 @@ public class Dealer
       }
     }
     Console.Write("\n");
+  }
+  public void CheckVictory()
+  {
+    if (_total > 21)
+    {
+      Console.WriteLine("Dealer have busted!");
+      ShowTrueHands();
+      Environment.Exit(0);
+    }
+    else if (_total == 21)
+    {
+      Console.WriteLine("Dealer have won!");
+      ShowTrueHands();
+      Environment.Exit(0);
+    }
+  }
+  public bool HasAce()
+  {
+    // bool hasAce = false;
+    foreach (Card card in _cards)
+    {
+      if (card.Name == "A")
+      {
+        return true;
+      }
+    }
+
+    return false;
   }
   private void CalculateTotal()
   {
@@ -73,18 +101,18 @@ public class Dealer
       }
     }
 
-    if (total > 21)
-    {
-      Console.WriteLine("Dealer have busted!");
-      ShowTrueHands();
-      Environment.Exit(0);
-    }
-    else if (total == 21)
-    {
-      Console.WriteLine("Dealer have won!");
-      ShowTrueHands();
-      Environment.Exit(0);
-    }
+    // if (total > 21)
+    // {
+    //   Console.WriteLine("Dealer have busted!");
+    //   ShowTrueHands();
+    //   Environment.Exit(0);
+    // }
+    // else if (total == 21)
+    // {
+    //   Console.WriteLine("Dealer have won!");
+    //   ShowTrueHands();
+    //   Environment.Exit(0);
+    // }
 
     _total = total;
   }

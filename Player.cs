@@ -17,18 +17,17 @@ public class Player
   }
 
 
-
   public void Hit()
   {
     _cards.Add(Deck.Draw());
-    ShowHands();
+    // ShowHands();
     CalculateTotal();
   }
   public void Stand()
   {
     _isStanding = true;
   }
-  private void ShowHands()
+  public void ShowHands()
   {
     Console.Write("Your cards: ");
     foreach (Card card in _cards)
@@ -36,6 +35,19 @@ public class Player
       Console.Write($"{card.Name} ");
     }
     Console.Write("\n");
+  }
+  public void CheckVictory()
+  {
+    if (_total > 21)
+    {
+      Console.WriteLine("You have busted!");
+      Environment.Exit(0);
+    }
+    else if (_total == 21)
+    {
+      Console.WriteLine("You have won!");
+      Environment.Exit(0);
+    }
   }
   private void CalculateTotal()
   {
@@ -63,16 +75,16 @@ public class Player
       }
     }
 
-    if (total > 21)
-    {
-      Console.WriteLine("You have busted!");
-      Environment.Exit(0);
-    }
-    else if (total == 21)
-    {
-      Console.WriteLine("You have won!");
-      Environment.Exit(0);
-    }
+    // if (total > 21)
+    // {
+    //   Console.WriteLine("You have busted!");
+    //   Environment.Exit(0);
+    // }
+    // else if (total == 21)
+    // {
+    //   Console.WriteLine("You have won!");
+    //   Environment.Exit(0);
+    // }
 
     _total = total;
   }
