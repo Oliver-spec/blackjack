@@ -4,8 +4,9 @@ public static class Program
 {
   private static void Main()
   {
-    Console.WriteLine("Welcome to BlackJack!");
+    Console.WriteLine("*-*-*-*-*  Welcome to BlackJack! *-*-*-*-*");
 
+    Deck.GenerateDeck();
     Deck.Shuffle();
 
     Dealer dealer = new();
@@ -61,12 +62,14 @@ public static class Program
         dealer.Hit();
         dealer.ShowHands();
         dealer.CheckVictory();
+        continue;
       }
       else if (dealer.Total == 17 && dealer.HasAce())
       {
         dealer.Hit();
         dealer.ShowHands();
         dealer.CheckVictory();
+        continue;
       }
 
       if (dealer.Total > player.Total)

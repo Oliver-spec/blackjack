@@ -2,38 +2,31 @@
 
 public static class Deck
 {
-  private static Card[] _cards = [
-    new("2"), new("3"), new("4"),
-    new("5"), new("6"), new("7"),
-    new("8"), new("9"), new("10"),
-    new("J"), new("Q"), new("K"),
-    new("A"),
-    new("2"), new("3"), new("4"),
-    new("5"), new("6"), new("7"),
-    new("8"), new("9"), new("10"),
-    new("J"), new("Q"), new("K"),
-    new("A"),
-    new("2"), new("3"), new("4"),
-    new("5"), new("6"), new("7"),
-    new("8"), new("9"), new("10"),
-    new("J"), new("Q"), new("K"),
-    new("A"),
-    new("2"), new("3"), new("4"),
-    new("5"), new("6"), new("7"),
-    new("8"), new("9"), new("10"),
-    new("J"), new("Q"), new("K"),
-    new("A")
-  ];
+  public static List<Card> _cards = [];
+  private static readonly List<string> _names = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+  private static readonly List<string> _suits = ["Spades", "Hearts", "Diamonds", "Clubs"];
 
 
   public static void Shuffle()
   {
-    new Random().Shuffle(_cards);
+    Card[] cards = _cards.ToArray();
+    new Random().Shuffle(cards);
+    _cards = cards.ToList();
   }
   public static Card Draw()
   {
     Card cardDrawn = _cards[0];
-    _cards = _cards.Skip(1).ToArray();
+    _cards.RemoveAt(0);
     return cardDrawn;
+  }
+  public static void GenerateDeck()
+  {
+    for (int i = 0; i < 4; i++)
+    {
+      foreach (string name in _names)
+      {
+        _cards.Add(new Card(name, _suits[i]));
+      }
+    }
   }
 }
