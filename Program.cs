@@ -7,7 +7,11 @@ public static class Program
     // main loop
     while (true)
     {
-      Console.WriteLine("*-*-*-*-*  Welcome to BlackJack! *-*-*-*-*");
+      Console.WriteLine("**************************");
+      Console.WriteLine("*                        *");
+      Console.WriteLine("*  Welcome to BlackJack! *");
+      Console.WriteLine("*                        *");
+      Console.WriteLine("**************************");
 
       Deck.GenerateDeck();
       Deck.Shuffle();
@@ -15,43 +19,50 @@ public static class Program
       Player player = new();
       player.Hit();
       player.Hit();
-      player.ShowHands();
+      // player.ShowHands();
+      // StatusDisplay.Init(player, null);
       player.CheckVictory();
 
       if (player.HasBusted)
       {
-        Console.WriteLine("You lost X_X");
+        // Console.WriteLine("You lost X_X");
+        StatusDisplay.Lost(player, null);
         continue;
       }
 
       Dealer dealer = new();
       dealer.Hit();
       dealer.Hit();
-      dealer.ShowHands();
+      // dealer.ShowHands();
+      StatusDisplay.Init(player, dealer);
       dealer.CheckVictory();
 
       if (dealer.HasBusted)
       {
-        Console.WriteLine("You won OwO");
-        dealer.ShowTrueHands();
+        // Console.WriteLine("You won OwO");
+        // dealer.ShowTrueHands();
+        StatusDisplay.Won(player, dealer);
         continue;
       }
       else if (player.HasWon && dealer.HasWon)
       {
-        Console.WriteLine("Draw -_-");
-        dealer.ShowTrueHands();
+        // Console.WriteLine("Draw -_-");
+        // dealer.ShowTrueHands();
+        StatusDisplay.Draw(player, dealer);
         continue;
       }
       else if (dealer.HasWon)
       {
-        Console.WriteLine("You lost X_X");
-        dealer.ShowTrueHands();
+        // Console.WriteLine("You lost X_X");
+        // dealer.ShowTrueHands();
+        StatusDisplay.Lost(player, dealer);
         continue;
       }
       else if (player.HasWon)
       {
-        Console.WriteLine("You won OwO");
-        dealer.ShowTrueHands();
+        // Console.WriteLine("You won OwO");
+        // dealer.ShowTrueHands();
+        StatusDisplay.Won(player, dealer);
         continue;
       }
 
@@ -60,11 +71,13 @@ public static class Program
       {
         Console.WriteLine("Press h to hit.\nPress s to stand.");
         string input = Console.ReadLine() ?? "";
+
         switch (input)
         {
           case "h":
             player.Hit();
-            player.ShowHands();
+            // player.ShowHands();
+            StatusDisplay.PlayerHit(player, dealer);
             player.CheckVictory();
             break;
           case "s":
@@ -91,7 +104,8 @@ public static class Program
 
       if (player.HasBusted)
       {
-        Console.WriteLine("You lost X_X");
+        // Console.WriteLine("You lost X_X");
+        StatusDisplay.Lost(player, dealer);
         continue;
       }
 
@@ -101,19 +115,22 @@ public static class Program
         if (dealer.Total <= 16)
         {
           dealer.Hit();
-          dealer.ShowTrueHands();
+          // dealer.ShowTrueHands();
+          StatusDisplay.DealerHit(player, dealer);
           dealer.CheckVictory();
 
           if (dealer.HasBusted)
           {
-            Console.WriteLine("You won OwO");
-            dealer.ShowTrueHands();
+            // Console.WriteLine("You won OwO");
+            // dealer.ShowTrueHands();
+            StatusDisplay.Won(player, dealer);
             break;
           }
           else if (dealer.HasWon && player.HasWon)
           {
-            Console.WriteLine("Draw -_-");
-            dealer.ShowTrueHands();
+            // Console.WriteLine("Draw -_-");
+            // dealer.ShowTrueHands();
+            StatusDisplay.Draw(player, dealer);
             break;
           }
 
@@ -122,19 +139,22 @@ public static class Program
         else if (dealer.Total == 17 && dealer.HasAce())
         {
           dealer.Hit();
-          dealer.ShowHands();
+          // dealer.ShowHands();
+          StatusDisplay.DealerHit(player, dealer);
           dealer.CheckVictory();
 
           if (dealer.HasBusted)
           {
-            Console.WriteLine("You won OwO");
-            dealer.ShowTrueHands();
+            // Console.WriteLine("You won OwO");
+            // dealer.ShowTrueHands();
+            StatusDisplay.Won(player, dealer);
             break;
           }
           else if (dealer.HasWon && player.HasWon)
           {
-            Console.WriteLine("Draw -_-");
-            dealer.ShowTrueHands();
+            // Console.WriteLine("Draw -_-");
+            // dealer.ShowTrueHands();
+            StatusDisplay.Draw(player, dealer);
             break;
           }
 
@@ -143,26 +163,30 @@ public static class Program
 
         if (player.HasWon)
         {
-          Console.WriteLine("You Won OwO");
-          dealer.ShowTrueHands();
+          // Console.WriteLine("You Won OwO");
+          // dealer.ShowTrueHands();
+          StatusDisplay.Won(player, dealer);
           break;
         }
         else if (dealer.Total > player.Total)
         {
-          Console.WriteLine("You Lost X_X");
-          dealer.ShowTrueHands();
+          // Console.WriteLine("You Lost X_X");
+          // dealer.ShowTrueHands();
+          StatusDisplay.Lost(player, dealer);
           break;
         }
         else if (dealer.Total < player.Total)
         {
-          Console.WriteLine("You Won OwO");
-          dealer.ShowTrueHands();
+          // Console.WriteLine("You Won OwO");
+          // dealer.ShowTrueHands();
+          StatusDisplay.Won(player, dealer);
           break;
         }
         else if (dealer.Total == player.Total)
         {
-          Console.WriteLine("Draw -_-");
-          dealer.ShowTrueHands();
+          // Console.WriteLine("Draw -_-");
+          // dealer.ShowTrueHands();
+          StatusDisplay.Draw(player, dealer);
           break;
         }
       }

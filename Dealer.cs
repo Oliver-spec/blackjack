@@ -53,13 +53,13 @@ public class Dealer
     if (_total > 21)
     {
       // Console.WriteLine("Dealer has busted!");
-      ShowTrueHands();
+      // ShowTrueHands();
       HasBusted = true;
     }
     else if (_total == 21)
     {
       // Console.WriteLine("Dealer has won!");
-      ShowTrueHands();
+      // ShowTrueHands();
       HasWon = true;
     }
   }
