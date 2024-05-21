@@ -14,6 +14,8 @@ public class Dealer
   {
     get { return _cards; }
   }
+  public bool HasWon { get; private set; } = false;
+  public bool HasBusted { get; private set; } = false;
 
 
   public void Hit()
@@ -50,15 +52,15 @@ public class Dealer
   {
     if (_total > 21)
     {
-      Console.WriteLine("Dealer has busted!");
+      // Console.WriteLine("Dealer has busted!");
       ShowTrueHands();
-      Environment.Exit(0);
+      HasBusted = true;
     }
     else if (_total == 21)
     {
-      Console.WriteLine("Dealer has won!");
+      // Console.WriteLine("Dealer has won!");
       ShowTrueHands();
-      Environment.Exit(0);
+      HasWon = true;
     }
   }
   public bool HasAce()

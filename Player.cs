@@ -15,6 +15,8 @@ public class Player
   {
     get { return _total; }
   }
+  public bool HasWon { get; private set; } = false;
+  public bool HasBusted { get; private set; } = false;
 
 
   public void Hit()
@@ -39,13 +41,13 @@ public class Player
   {
     if (_total > 21)
     {
-      Console.WriteLine("You have busted!");
-      Environment.Exit(0);
+      // Console.WriteLine("You have busted!");
+      HasBusted = true;
     }
     else if (_total == 21)
     {
-      Console.WriteLine("You have won!");
-      Environment.Exit(0);
+      // Console.WriteLine("You have won!");
+      HasWon = true;
     }
   }
   private void CalculateTotal()
