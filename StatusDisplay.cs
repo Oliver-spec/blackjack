@@ -52,7 +52,7 @@ public static class StatusDisplay
     Console.WriteLine(_perimeter);
     Console.WriteLine("Dealer Hit!");
     player.ShowHands();
-    dealer.ShowHands();
+    dealer.ShowTrueHands();
     Console.WriteLine(_perimeter);
   }
   private static void Exit()
